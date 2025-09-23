@@ -78,7 +78,7 @@ nav ul li a:hover {
   z-index: 1;
   max-width: 700px;
   padding: 0 20px;
-margin-top: 120px;
+  margin-top: 120px;
   display: flex;
   flex-direction: column;   /* empilha os itens */
   align-items: center;      /* centraliza no eixo horizontal */
@@ -101,14 +101,14 @@ margin-top: 120px;
   font-size: 40px;
   font-weight: 100;
   color: #626C4A;
-  margin-top: -2px;
+  margin-top: -23px;
   
   
 }
 
 .hero-text .date {
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   color: #626C4A;
  
 }
@@ -204,7 +204,6 @@ body {
   height: 100vh;
   z-index: 2;
   transform: translateY(var(--offsetY));
-  opacity: var(--opacity);
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   overflow: hidden;
 }
@@ -212,11 +211,6 @@ body {
 
 
 
-.papel-rasgado img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
 
 
 .scroll-space {
@@ -224,14 +218,6 @@ body {
 }
 
 
-.papel-rasgado {
-  position: relative;
-  z-index: 2;
-  transform: translateY(var(--offsetY));
-  opacity: var(--opacity);
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-  overflow: hidden;
-}
 
 .papel-rasgado img {
   width: 100%;
@@ -239,6 +225,7 @@ body {
   object-fit: contain;
   display: block;
   opacity: 0.7;
+  
   
 }
 
@@ -249,10 +236,9 @@ body {
   transition: transform 0.5s ease-out;
   width: 100%;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
   padding: 80px 20px;
   z-index: 1;
-  opacity: 0.7;
 }
 
 
@@ -302,4 +288,4 @@ body {
 }
 
 
-.teste{}
+
