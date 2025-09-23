@@ -1,74 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>ScrollTrigger SVG Mask</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save The Date</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Se quiser testar sem o style.css separado */
-    body, html {
-      width: 100%;
-      height: 100%;
-      background: #111b29;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 99px;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
+  <link rel="icon" type="image/x-icon" href="icon-janela.ico">
+  <script src="https://unpkg.com/basicscroll/dist/basicScroll.min.js"></script>
 
-    div {
-      position: absolute;
-    }
-
-    main {
-      position: fixed;
-      background: #fff;
-      width: 100%;
-      max-width: 1200px;
-      height: 100%;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .scrollDist {
-      width: 100%;
-      height: 200%;
-    }
-  </style>
 </head>
 <body>
-  <div class="scrollDist"></div>
-  <main>
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-      <mask id="m">
-        <g class="cloud1">
-          <rect fill="#fff" width="100%" height="801" y="799" />
-          <image xlink:href="imagens/cloud1Mask.jpg" width="1200" height="800"/>
-        </g>
-      </mask>
+  <!-- Navbar -->
+  <header>
+  <div class="top-bar">
+    <div class="logo">
+  <img src="6.svg" alt="Luciana e Filipe" class="logo-img">
+</div>
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  </div>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#">CONFIRMAR PRESENÇA</a></li>
+      <li><a href="#">LISTA DE PRESENTES</a></li>
+      <li><a href="#">O EVENTO</a></li>
+      <li><a href="#">HISTÓRIA DO CASAL</a></li>
+      <li><a href="#">AJUDA</a></li>
+    </ul>
+  </nav>
+</header>
 
-      <image class="sky" xlink:href="imagens/sky.jpg" width="1200" height="590" />
-      <image class="mountBg" xlink:href="imagens/mountBg.png" width="1200" height="800"/>
-      <image class="mountMg" xlink:href="imagens/mountMg.png" width="1200" height="800"/>
-      <image class="cloud2" xlink:href="imagens/cloud2.png" width="1200" height="800"/>
-      <image class="mountFg" xlink:href="imagens/mountFg.png" width="1200" height="800"/>
-      <image class="cloud1" xlink:href="imagens/cloud1.png" width="1200" height="800"/>
-      <image class="cloud3" xlink:href="imagens/cloud3.png" width="1200" height="800"/>
-      <text fill="#fff" x="350" y="200">EXPLORE</text>
-      <polyline class="arrow" fill="#fff" points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" />
-      <g mask="url(#m)">
-        <rect fill="#fff" width="100%" height="100%" />
-        <text x="350" y="200" fill="#162a43">FURTHER</text>
-      </g>
-      <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="220" style="cursor:pointer"/>
-    </svg>
-  </main>
 
-  <!-- Bibliotecas GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>LUCIANA<br> & <br>FILIPE</h1>
+      <h2>___</h2>
+      <p class="date">02.05.2025</p>
+    </div>
+  </section>
+    <div class="scroll-space"></div>
+    <div class="papel-rasgado">
+    <img class="scene" data-modifier="30" src="ripped-bg-3.png">  
+   <section class="evento-romantico">
+  <div class="evento-grid">
+    <div class="imagem-casal">
+      <img src="sediv.jpg" alt="Luciana e Filipe se beijando">
+    </div>
+    <div class="texto-cima">
+      <h2>Read Our Story</h2>
+      <p>
+        Join us as we embark on a journey of love, joy, and eternal happiness.
+        From a chance meeting to a lifetime together, discover the beauty that began with a spark.
+        Our celebration is more than an event—it’s a story of passion, commitment, and dreams fulfilled.
+        Join us in Tuscany as we share this moment, celebrate our love, and create memories to last a lifetime.
+      </p>
+      <a href="#" class="botao-romantico">Read Our Story</a>
+    </div>
+  </div>
+</section>
+
+  </div>
+ 
+
+
 </body>
 </html>

@@ -1,30 +1,59 @@
-gsap
-  .timeline({
-    scrollTrigger:{
-      trigger:'.scrollDist',
-      start:'0 0',
-      end:'100% 100%',
-      scrub:1
-    }})
-  .fromTo('.sky', {y:0},{y:-200}, 0)
-  .fromTo('.cloud1', {y:100},{y:-800}, 0)
-  .fromTo('.cloud2', {y:-150},{y:-500}, 0)
-  .fromTo('.cloud3', {y:-50},{y:-650}, 0)
-  .fromTo('.mountBg', {y:-10},{y:-100}, 0)
-  .fromTo('.mountMg', {y:-30},{y:-250}, 0)
-  .fromTo('.mountFg', {y:-50},{y:-600}, 0)
+document.addEventListener('DOMContentLoaded', function () {
+  // 🔹 MENU TOGGLE
+  const toggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  toggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  document.addEventListener('click', function (event) {
+    const isClickInsideMenu = navMenu.contains(event.target);
+    const isClickOnToggle = toggle.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+      navMenu.classList.remove('active');
+    }
+  });
+
+  // 🔹 PARALLAX NAS IMAGENS
+  document.querySelectorAll('.scene').forEach((elem) => {
+    const modifier = elem.getAttribute('data-modifier');
+
+    basicScroll.create({
+      elem: elem,
+      from: 0,
+      to: 519,
+      direct: true,
+      props: {
+        '--translateY': {
+          from: '0',
+          to: `${10 * modifier}px`
+        }
+      }
+    }).start();
+  });
+
+  // 🔹 EFEITO DE SUBIDA DA DIV .papel-rasgado
+ basicScroll.create({
+  elem: document.querySelector('.papel-rasgado'),
+  from: 0,
+  to: 300,
+  direct: true,
+  props: {
+    '--offsetY': {
+      from: '0px',
+      to: '-100vh'
+    },
+    '--opacity': {
+      from: 0,
+      to: 1
+    }
+  }
+}).start();
 
 
-const arrowBtn = document.querySelector('#arrow-btn')
 
-arrowBtn.addEventListener('mouseenter', ()=>{
- gsap.to('.arrow', {y:10, duration:0.8, ease:'back.inOut(3)', overwrite:'auto'}) 
-})
 
-arrowBtn.addEventListener('mouseleave', ()=> {
-  gsap.to('.arrow', {y:0, duration:0.5, ease:'power3.out', overwrite:'auto'}) 
-})
 
-arrowBtn.addEventListener('click', ()=> {
-  gsap.to(window, {scrollTo:innerHeight, duration:1.5, ease:'power1.inOut'})
-}) 
+});
