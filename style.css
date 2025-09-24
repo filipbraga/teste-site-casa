@@ -110,25 +110,29 @@ nav ul li a:hover {
   align-items: center;
   text-align: center;
   z-index: 0; /* fica atrás do rasgado */
+  transition: background 1s;
 }
 
 .hero-text {
   position: relative;
   z-index: 1;
-  color: white;
+  color: #626C4A;
+  text-align: center;       /* Centraliza horizontalmente */
+  padding-top: 0px;       /* Ajusta a distância do topo */
 }
 
 .hero-text h1 {
- font-size: 40px;
-  font-weight: 100;
-  color: #626C4A;
-  margin-bottom: 800px;
+  font-size: 64px;          /* Maior destaque pro título */
+  font-weight: 300;         /* Peso mais leve, elegante */
+  margin-bottom: 20px;      /* Espaço entre título e data */
+  line-height: 1.2;         /* Espaçamento interno mais bonito */
 }
 
 .hero-text p {
-  font-size: 18px;
+  font-size: 22px;
   color: #626C4A;
-  margin-top: 40px;
+  margin-top: 10px;         /* Reduz o espaço acima da data */
+  letter-spacing: 2px;      /* Dá um respiro nas letras */
 }
 
 /* Papel rasgado sobre a hero */
@@ -148,15 +152,17 @@ nav ul li a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0.5
 }
 
 /* Evento */
 .evento-romantico {
   min-height: 100vh;
   padding: 80px 20px;
-  background-color: rgba(255,255,255);
+  background-color: rgba(255, 255, 255, 0.5); /* branco com 50% de transparência */
   position: relative;
   z-index: 1;
+  /* remove o opacity geral */
 }
 
 .evento-grid {

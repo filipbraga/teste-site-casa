@@ -16,3 +16,16 @@ window.addEventListener('scroll', () => {
     papel.style.transform = 'translateY(50px)';
   }
 });
+
+window.addEventListener("scroll", function () {
+  const papel = document.querySelector(".papel-rasgado");
+  const hero = document.querySelector(".hero");
+
+  const papelTop = papel.getBoundingClientRect().top;
+
+  if (papelTop <= 0) {
+    hero.style.backgroundImage = "url('fitas.jpg')"; // nova imagem
+  } else {
+    hero.style.backgroundImage = "url('hero.jpg')"; // volta à original
+  }
+});
