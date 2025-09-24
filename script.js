@@ -1,31 +1,29 @@
-const papel = document.querySelector('.papel-rasgado');
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero");
+  const papel = document.querySelector(".papel-rasgado");
 
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const papelTop = papel.offsetTop;
+  function handleScroll() {
+    const papelRect = papel.getBoundingClientRect();
+    const scrollY = window.scrollY;
 
-  // Quando a rolagem passa do topo do papel
-  if (scrollY + window.innerHeight > papelTop) {
-    let progress = (scrollY + window.innerHeight - papelTop) / papel.offsetHeight;
-    if(progress > 1) progress = 1;
+    // Troca de fundo da hero
+    if (papelRect.top <= 0) {
+      hero.style.backgroundImage = "url('fitas.jpg')";
+    } else {
+      hero.style.backgroundImage = "url('hero.jpg')";
+    }
+
+    // Animação do papel
+    let progress = (window.innerHeight - papelRect.top) / papel.offsetHeight;
+    if (progress > 1) progress = 1;
+    if (progress < 0) progress = 0;
 
     papel.style.opacity = progress;
     papel.style.transform = `translateY(${50 - progress * 50}px)`;
-  } else {
-    papel.style.opacity = 0;
-    papel.style.transform = 'translateY(50px)';
   }
-});
 
-window.addEventListener("scroll", function () {
-  const papel = document.querySelector(".papel-rasgado");
-  const hero = document.querySelector(".hero");
+  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("resize", handleScroll);
 
-  const papelTop = papel.getBoundingClientRect().top;
-
-  if (papelTop <= 0) {
-    hero.style.backgroundImage = "url('fitas.jpg')"; // nova imagem
-  } else {
-    hero.style.backgroundImage = "url('hero.jpg')"; // volta à original
-  }
+  handleScroll(); // inicializa
 });

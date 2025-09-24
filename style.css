@@ -19,7 +19,6 @@ body, html {
   scroll-behavior: smooth;
 }
 
-
 /* Navbar */
 header {
   position: fixed;
@@ -38,7 +37,6 @@ header {
   width: auto;
 }
 
-/* Menu padrão */
 nav ul {
   list-style: none;
   display: flex;
@@ -56,7 +54,6 @@ nav ul li a:hover {
   color: #d4af37;
 }
 
-/* Menu sanduíche */
 .menu-toggle {
   display: none;
   font-size: 25px;
@@ -67,7 +64,6 @@ nav ul li a:hover {
   margin-top: 0;
 }
 
-/* Exibe menu sanduíche em telas menores */
 @media (max-width: 1024px) {
   .menu-toggle {
     display: block;
@@ -96,10 +92,9 @@ nav ul li a:hover {
   width: 100%;
 }
 
-
 /* Hero fixa */
 .hero {
-  position: fixed; /* fixa no topo */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -109,7 +104,7 @@ nav ul li a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  z-index: 0; /* fica atrás do rasgado */
+  z-index: 0;
   transition: background 1s;
 }
 
@@ -117,34 +112,46 @@ nav ul li a:hover {
   position: relative;
   z-index: 1;
   color: #626C4A;
-  text-align: center;       /* Centraliza horizontalmente */
-  padding-top: 0px;       /* Ajusta a distância do topo */
+  text-align: center;
+  padding-top: 0px;
+  margin-top: -80px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-text h1 {
-  font-size: 64px;          /* Maior destaque pro título */
-  font-weight: 300;         /* Peso mais leve, elegante */
-  margin-bottom: 20px;      /* Espaço entre título e data */
-  line-height: 1.2;         /* Espaçamento interno mais bonito */
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  margin-top: 0px;
 }
 
 .hero-text p {
   font-size: 22px;
   color: #626C4A;
-  margin-top: 10px;         /* Reduz o espaço acima da data */
-  letter-spacing: 2px;      /* Dá um respiro nas letras */
+  margin-top: -20px;
+  letter-spacing: 2px;
 }
 
-/* Papel rasgado sobre a hero */
+/* Papel rasgado */
 .papel-rasgado {
   position: relative;
   width: 100%;
   height: 150px;
-  margin-top: 100vh; /* começa abaixo da hero */
-  z-index: 2; /* acima da hero */
+  margin-top: 100vh;
+  z-index: 2;
   transform: translateY(50px);
   opacity: 0;
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transition: all 0.3s ease-in-out, opacity 0.3s ease-out;
 }
 
 .papel-rasgado img {
@@ -152,17 +159,16 @@ nav ul li a:hover {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 /* Evento */
 .evento-romantico {
   min-height: 100vh;
   padding: 80px 20px;
-  background-color: rgba(255, 255, 255, 0.5); /* branco com 50% de transparência */
+  background-color: rgba(255, 255, 255, 0.5);
   position: relative;
   z-index: 1;
-  /* remove o opacity geral */
 }
 
 .evento-grid {
@@ -206,13 +212,62 @@ nav ul li a:hover {
   background-color: #b8922f;
 }
 
-/* Responsivo */
+/* Responsividade extra */
 @media (max-width: 768px) {
   .hero-text h1 {
-    font-size: 32px;
+    font-size: 28px;
+    margin-top: -200px;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    margin-top: -10px;
   }
 
   .evento-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .texto-cima h2 {
+    font-size: 24px;
+  }
+
+  .texto-cima p {
+    font-size: 16px;
+  }
+
+  .botao-romantico {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 22px;
+    margin-top: -150px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .evento-romantico {
+    padding: 40px 10px;
+  }
+
+  .botao-romantico {
+    width: 100%;
+    text-align: center;
   }
 }
