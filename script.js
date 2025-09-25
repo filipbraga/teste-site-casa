@@ -1,34 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   const papel = document.querySelector(".papel-rasgado");
+  // 1. SELECIONE O NOVO ELEMENTO
+  const heroFade = document.querySelector(".hero-background-fade");
 
-  // Força o navegador a otimizar animação
-  papel.style.willChange = "opacity, transform";
+  let scrollY = window.scrollY;
+  let currentY = scrollY;
 
-  function handleScroll() {
-    const papelRect = papel.getBoundingClientRect();
+  function update() {
+    // Ler posição real do scroll
+    scrollY = window.scrollY;
 
-    // Troca de fundo da hero
-    if (papelRect.top <= 0) {
-      hero.style.backgroundImage = "url('fitas.jpg')";
-    } else {
-      hero.style.backgroundImage = "url('hero.jpg')";
-    }
+    // Interpolação suave: easing
+    currentY += (scrollY - currentY) * 0.1;
 
-    // Animação do papel
-    let progress = (window.innerHeight - papelRect.top) / papel.offsetHeight;
-    progress = Math.min(Math.max(progress, 0), 1); // garante 0 <= progress <= 1
+    const rect = papel.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
 
-    // Adiciona transição suave
-    papel.style.transition = "opacity 0.3s ease-out, transform 0.3s ease-out";
+    // Progresso do scroll relativo ao papel
+    let progress = (viewportHeight - rect.top + (currentY - scrollY)) / rect.height;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    // Move o papel e ajusta opacidade suavemente
     papel.style.opacity = progress;
     papel.style.transform = `translateY(${50 - progress * 50}px)`;
+
+    // 2. A MÁGICA ACONTECE AQUI!
+    // Em vez de trocar a imagem, mudamos a opacidade da camada de cima
+    // com base no progresso do scroll.
+    heroFade.style.opacity = progress;
+
+    // A linha antiga que trocava o background foi removida.
+
+    // Loop contínuo para suavizar o efeito
+    requestAnimationFrame(update);
   }
 
-  // Scroll e resize
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("resize", handleScroll);
-
   // Inicializa
-  handleScroll();
+  update();
+});
+
+
+const img = document.querySelector('.papel-rasgado img');
+img.addEventListener('load', () => {
+  // agora podemos iniciar o parallax
+  startParallax();
 });
