@@ -1,42 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   const papel = document.querySelector(".papel-rasgado");
-  // 1. SELECIONE O NOVO ELEMENTO
   const heroFade = document.querySelector(".hero-background-fade");
+  const heroText = document.querySelector(".hero-text"); // 👈 texto do h1 e p
 
   let scrollY = window.scrollY;
   let currentY = scrollY;
 
   function update() {
-    // Ler posição real do scroll
     scrollY = window.scrollY;
-
-    // Interpolação suave: easing
     currentY += (scrollY - currentY) * 0.1;
 
     const rect = papel.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
-    // Progresso do scroll relativo ao papel
     let progress = (viewportHeight - rect.top + (currentY - scrollY)) / rect.height;
     progress = Math.min(Math.max(progress, 0), 1);
 
-    // Move o papel e ajusta opacidade suavemente
+    // --- Papel ---
     papel.style.opacity = progress;
     papel.style.transform = `translateY(${50 - progress * 50}px)`;
 
-    // 2. A MÁGICA ACONTECE AQUI!
-    // Em vez de trocar a imagem, mudamos a opacidade da camada de cima
-    // com base no progresso do scroll.
+    // --- Fade da camada ---
     heroFade.style.opacity = progress;
 
-    // A linha antiga que trocava o background foi removida.
+    // --- Texto sobe e some ---
+    const moveY = progress * -80; // até -80px pra cima
+    const fade = 1 - progress;    // opacidade vai de 1 → 0
+    heroText.style.transform = `translateY(${moveY}px)`;
+    heroText.style.opacity = fade;
 
-    // Loop contínuo para suavizar o efeito
     requestAnimationFrame(update);
   }
 
-  // Inicializa
   update();
 });
 

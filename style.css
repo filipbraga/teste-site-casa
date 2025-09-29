@@ -121,45 +121,52 @@ nav ul li a:hover {
   /* ELA COMEÇA INVISÍVEL */
   opacity: 0;
   /* O JavaScript vai controlar a opacidade, então não precisa de transition aqui */
-  transition: opacity 2s ease-in; /* <<< AQUI ESTÁ A MAGIA */
+  transition: opacity 1.0s linear; /* <<< AQUI ESTÁ A MAGIA */
 }
 .hero-background-fade.active {
   opacity: 1;
   transform: scale(1); /* volta ao normal */
 }
+.hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('hero.webp') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  z-index: 0;
+  padding-top: 500px; /* padrão para desktop */
+}
+
 .hero-text {
   position: relative;
-  /* Z-INDEX GARANTE QUE O TEXTO FIQUE NA FRENTE DAS IMAGENS */
   z-index: 1;
   color: #626C4A;
   text-align: center;
-  padding-top: 0px;
-  margin-top: -80px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1.2s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: translateY(-60px);
+  transition: none;
 }
 
 .hero-text h1 {
   font-size: 40px;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
 
 .hero-text p {
   font-size: 22px;
   color: #626C4A;
-  margin-top: -20px;
+  margin-top: 0;
   letter-spacing: 2px;
 }
+
+
 
 /* --- Papel rasgado (Parallax Suave) --- */
 .papel-rasgado {
@@ -233,61 +240,46 @@ nav ul li a:hover {
 }
 
 /* --- Responsividade extra --- */
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 400px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-text p {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    padding-top: 300px;
+  }
+
   .hero-text h1 {
     font-size: 28px;
-    margin-top: -200px;
   }
 
   .hero-text p {
     font-size: 18px;
-    margin-top: -10px;
-  }
-
-  .evento-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .texto-cima h2 {
-    font-size: 24px;
-  }
-
-  .texto-cima p {
-    font-size: 16px;
-  }
-
-  .botao-romantico {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .logo-img {
-    height: 60px;
-  }
-
-  nav ul {
-    gap: 10px;
+    letter-spacing: 1px;
   }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding-top: 250px;
+  }
+
   .hero-text h1 {
     font-size: 22px;
-    margin-top: -150px;
   }
 
   .hero-text p {
     font-size: 16px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
-
-  .evento-romantico {
-    padding: 40px 10px;
-  }
-
-  .botao-romantico {
-    width: 100%;
-    text-align: center;
-  }
-}
