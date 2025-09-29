@@ -14,6 +14,7 @@
 }
 
 body, html {
+  
   font-family: 'RockTwo', serif;
   color: #626C4A;
   scroll-behavior: smooth;
@@ -133,7 +134,7 @@ nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: url('hero.webp') center/cover no-repeat;
+  background: url('hero.webp') center/cover no-repeat ;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -191,6 +192,7 @@ nav ul li a:hover {
 
 /* --- Evento --- */
 .evento-romantico {
+  
   min-height: 100vh;
   padding: 80px 20px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -272,7 +274,7 @@ nav ul li a:hover {
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 150px;
+    padding-top:  100px;
   }
 
   .hero-text h1 {
