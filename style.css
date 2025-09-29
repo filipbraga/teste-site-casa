@@ -272,7 +272,7 @@ nav ul li a:hover {
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 250px;
+    padding-top: 150px;
   }
 
   .hero-text h1 {
